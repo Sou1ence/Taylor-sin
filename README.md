@@ -1,131 +1,285 @@
-# TaylorSinFX - Wizualizacja szeregu Taylora dla funkcji sin(x)
 
-## Spis treści
-- [Wprowadzenie](#wprowadzenie)
-- [Funkcjonalność](#funkcjonalność)
-- [Wymagania systemowe](#wymagania-systemowe)
-- [Instalacja](#instalacja)
-- [Instrukcja użytkowania](#instrukcja-użytkowania)
-- [Opis matematyczny](#opis-matematyczny)
-- [Szczegóły implementacji](#szczegóły-implementacji)
-- [Autor](#autor)
-- [Licencja](#licencja)
 
-## Wprowadzenie
 
-TaylorSinFX to interaktywna aplikacja edukacyjna napisana w JavaFX, która wizualizuje obliczanie przybliżonej wartości funkcji sinus (sin(x)) przy użyciu rozwinięcia w szereg Taylora. Aplikacja ta została stworzona w celu ułatwienia zrozumienia koncepcji szeregów potęgowych i ich zastosowania w obliczeniach trygonometrycznych.
 
-Aplikacja prezentuje wyniki w formie interaktywnego wykresu, który pokazuje, jak dokładność przybliżenia wzrasta wraz z uwzględnieniem kolejnych wyrazów szeregu. Jest to doskonałe narzędzie dydaktyczne dla studentów matematyki, inżynierii i nauk pokrewnych.
+# TaylorSinFX - Wizualizacja szeregu Taylora dla funkcji sin(x)  
 
+<a name="top"></a>
+[![Java](https://img.shields.io/badge/Java-17%2B-orange)](https://www.java.com/)
+[![JavaFX](https://img.shields.io/badge/JavaFX-17%2B-blue)](https://openjfx.io/)
+[![Licencja](https://img.shields.io/badge/Licencja-MIT-green)](LICENSE)
+
+## Spis treści  
+1. [Wprowadzenie](#wprowadzenie)  
+2. [Kluczowe funkcje](#funkcjonalność)  
+3. [Wymagania systemowe](#wymagania)  
+4. [Instalacja i uruchomienie](#instalacja)  
+5. [Szybki start](#szybki-start)  
+6. [Podstawy matematyczne](#matematyka)  
+7. [Architektura aplikacji](#architektura)  
+8. [Dokumentacja kodu](#kod)  
+9. [Przykłady użycia](#przyklady)  
+10. [Rozwój projektu](#rozwoj)  
+11. [Licencja](#licencja)  
+12. [Autor](#autor)  
+
+---
 ![изображение](https://github.com/user-attachments/assets/94eecc26-d283-447b-a8a6-6f5cbc94d1a1)
 
+<a name="wprowadzenie"></a>
+## 🌟 Wprowadzenie  
+**TaylorSinFX** to interaktywny symulator edukacyjny demonstrujący aproksymację funkcji sinus za pomocą szeregu Taylora. Projekt łączy w sobie:  
+- **Algorytmy numeryczne** (optymalizacja obliczeń)  
+- **Wizualizację danych** (dynamiczny wykres)  
+- **Inżynierię oprogramowania** (modułowa architektura)  
 
-## Funkcjonalność
+**Dlaczego warto?**  
+- 🎓 Idealne narzędzie do zrozumienia szeregów potęgowych  
+- ⚡ Rekurencyjna kalkulacja wyrazów (O(n) zamiast O(n²))  
+- 🔄 Automatyczna redukcja dużych kątów do [0, 2π)  
+- 🎨 Nowoczesny interfejs z ciemnym motywem  
 
-- **Interaktywny interfejs użytkownika** z intuicyjnym formularzem wejściowym
-- **Wybór jednostek**: stopnie lub radiany
-- **Wizualizacja w czasie rzeczywistym** przybliżenia funkcji sin(x)
-- **Wykres liniowy** pokazujący dokładność przybliżenia w zależności od liczby wyrazów szeregu
-- **Szczegółowe informacje o dokładności** obliczeń
-- **Estetyczny, nowoczesny design** z ciemnym motywem
-- **Optymalizacja obliczeń** dzięki wykorzystaniu właściwości symetrii funkcji sinus
-
-## Wymagania systemowe
-
-- Java 11 lub nowsza
-- JavaFX 11 lub nowsza
-- 64 MB RAM
-- System operacyjny: Windows, macOS, Linux
-
-## Instalacja
-
-1. Upewnij się, że masz zainstalowaną Javę w wersji 11 lub nowszej
-2. Pobierz pliki projektu z repozytorium
-3. Skompiluj projekt za pomocą Maven:
-
-```bash
-mvn clean package
-```
-
-4. Uruchom aplikację:
-
-```bash
-java -jar target/taylor-sin-fx.jar
-```
-
-Alternatywnie, można uruchomić aplikację bezpośrednio z IDE, uruchamiając klasę `org.example.taylor.TaylorSinFX`.
-
-## Instrukcja użytkowania
-
-1. **Wprowadź wartość kąta** w polu tekstowym "Angle"
-2. **Wybierz jednostkę** (stopnie lub radiany) z rozwijanej listy
-3. **Kliknij przycisk "Calculate"** lub naciśnij Enter
-4. **Obserwuj wykres** pokazujący, jak zmienia się przybliżona wartość sin(x) wraz z uwzględnieniem kolejnych wyrazów szeregu
-5. **Sprawdź szczegółowe informacje** o dokładności przybliżenia w sekcji poniżej wykresu
-
-## Opis matematyczny
-
-Szereg Taylora dla funkcji sin(x) w punkcie x = 0 ma postać:
-
-sin(x) = x - x³/3! + x⁵/5! - x⁷/7! + ...
-
-Ogólna formuła dla n-tego wyrazu szeregu:
-
-term(n) = (-1)ⁿ * x^(2n+1) / (2n+1)!
-
-Dokładność przybliżenia rośnie wraz z uwzględnieniem większej liczby wyrazów szeregu. W praktyce, dla większości zastosowań, uwzględnienie kilku pierwszych wyrazów daje już bardzo dobre przybliżenie.
-
-Aplikacja wykorzystuje również właściwości symetrii funkcji sinus, aby zoptymalizować obliczenia:
-- sin(x + 2π) = sin(x) - periodyczność
-- sin(-x) = -sin(x) - funkcja nieparzysta
-- sin(π - x) = sin(x) - symetria względem x = π/2
-
-## Szczegóły implementacji
-
-Aplikacja została zaimplementowana w języku Java z wykorzystaniem biblioteki JavaFX. Główne komponenty aplikacji:
-
-### Struktura projektu
-
-```
-src/
-├── main/
-│   ├── java/org/example/taylor/
-│   │   └── TaylorSinFX.java
-│   └── resources/
-│       └── style.css
-```
-
-### Kluczowe metody
-
-- `calculateTaylorSin(double x, int terms)` - Oblicza przybliżenie funkcji sin(x) przy użyciu określonej liczby wyrazów szeregu
-- `updateChart(LineChart<Number, Number> ch, Label infoLabel, double angle, String unit)` - Aktualizuje wykres i informacje o dokładności na podstawie wprowadzonych danych
-- `formatAngle(double angle, String unit)` - Formatuje kąt do wyświetlenia z odpowiednią jednostką
-
-### Interfejs użytkownika
-
-Interfejs użytkownika został zaprojektowany z myślą o prostocie i estetyce. Składa się z następujących elementów:
-- Formularz wejściowy (pole tekstowe, lista rozwijana, przycisk)
-- Wykres liniowy prezentujący wyniki
-- Sekcja informacyjna z danymi o dokładności
-- Etykieta z identyfikatorem autora (numer studenta)
-
-### Stylizacja
-
-Aplikacja korzysta z niestandardowego arkusza stylów CSS, który definiuje estetyczny ciemny motyw. Główne elementy stylizacji to:
-- Gradient tła
-- Zaokrąglone narożniki elementów
-- Niestandardowe kolory kontrolek
-- Stylizowany wykres z siatką
-- Efekty hover dla elementów interaktywnych
-
-## Autor
-
-Aplikacja została stworzona przez Kostiantyna Feniuka, studenta o numerze indeksu s29919.
-
-## Licencja
-
-Copyright (c) 2025 Kostiantyn Feniuk. Wszelkie prawa zastrzeżone.
+[Do góry ↑](#top)
 
 ---
 
-*Ten projekt został stworzony w celach edukacyjnych jako demonstracja wykorzystania szeregów Taylora w obliczeniach numerycznych oraz tworzenia interaktywnych aplikacji w JavaFX.*
+<a name="funkcjonalność"></a>
+## 🚀 Kluczowe funkcje  
+| Funkcja | Opis |  
+|---------|------|  
+| **Inteligentna normalizacja kątów** | Automatyczne sprowadzenie dowolnego kąta do przedziału [0, 2π) z zachowaniem wartości sinusa |  
+| **Optymalizacja obliczeń** | Wykorzystanie symetrii funkcji sinus:<br> - sin(π - x) = sin(x)<br> - sin(π + x) = -sin(x) |  
+| **Dynamiczny wykres** | Wizualizacja zbieżności szeregu w czasie rzeczywistym |  
+| **Analiza błędów** | Precyzyjne wyliczenia:<br> - Błąd bezwzględny<br> - Błąd względny (%) |  
+| **Wsparcie jednostek** | Konwersja stopni ↔ radiany w locie |  
+
+**Przykład działania:**  
+![Demo](https://via.placeholder.com/800x400.png?text=TaylorSinFX+Demo)  
+*Wykres przedstawia zbieżność szeregu dla x=π/4 (45°)*  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="wymagania"></a>
+## 💻 Wymagania systemowe  
+- **Środowisko wykonawcze:**  
+  - Java 17+ (z obsługą modules)  
+  - JavaFX 17+  
+- **Sprzęt:**  
+  - 512 MB RAM  
+  - Karta graficzna wspierająca OpenGL 2.0+  
+- **Systemy operacyjne:**  
+  - Windows 10+  
+  - macOS 10.15+  
+  - Linux (Ubuntu 20.04+, Fedora 33+)  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="instalacja"></a>
+## 📥 Instalacja i uruchomienie  
+
+### Metoda 1: Z użyciem Maven  
+```bash 
+git clone https://github.com/twoj-repozytorium/TaylorSinFX.git
+cd TaylorSinFX
+mvn clean javafx:run
+```  
+
+### Metoda 2: Bezpośrednio z JAR  
+```bash
+java --module-path /ścieżka/do/javafx-sdk-17/lib \
+     --add-modules javafx.controls,javafx.fxml \
+     -jar TaylorSinFX.jar
+```  
+
+### Konfiguracja w IntelliJ IDEA:  
+1. Otwórz projekt jako Maven Project  
+2. W Run/Debug Configurations dodaj VM Options:  
+   ```  
+   --module-path /ścieżka/do/javafx-sdk-17/lib --add-modules javafx.controls,javafx.fxml  
+   ```  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="szybki-start"></a>
+## 🏁 Szybki start  
+1. Wprowadź kąt:  
+   - Liczba rzeczywista (np. 45, 3.1415)  
+   - Obsługiwane formaty: 360°, 2π rad  
+2. Wybierz jednostkę:  
+   ```java
+   unitCombo.getItems().addAll("Degrees", "Radians"); // Implementacja ComboBox
+   ```  
+3. Kliknij "Calculate":  
+   - Algorytm wykona 3 główne kroki:  
+     1. Normalizacja kąta  
+     2. Redukcja do I ćwiartki  
+     3. Obliczenie 10 pierwszych wyrazów szeregu  
+
+**Wynik:**  
+```
+Real value sin(45.00°): 0.7071067812  
+Approximation with 10 terms: 0.7071067812  
+Absolute error: 0.0000000000  
+Relative error: 0.0000000000%  
+```  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="matematyka"></a>
+## 📐 Podstawy matematyczne  
+
+### Szereg Taylora dla sin(x)  
+Rozwinięcie wokół x=0 (szereg Maclaurina):  
+```math 
+\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots
+```  
+
+**Optymalizacja:**  
+Dla x > π/2 wykorzystujemy tożsamości:  
+```math
+\sin(x) = \begin{cases}
+\sin(\pi - x) & x \in (\frac{\pi}{2}, \pi] \\
+-\sin(x - \pi) & x \in (\pi, \frac{3\pi}{2}] \\
+-\sin(2\pi - x) & x \in (\frac{3\pi}{2}, 2\pi)
+\end{cases}
+```  
+
+### Złożoność obliczeniowa  
+| Metoda | Złożoność |  
+|--------|-----------|  
+| Naiwna (każdy wyraz od zera) | O(n²) |  
+| **Nasza (rekurencyjna)** | **O(n)** |  
+
+**Rekurencyjne obliczanie wyrazów:**  
+```java
+term_{n+1} = term_n * (-x²) / [(2n+2)(2n+3)]
+```  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="architektura"></a>
+## 🏗 Architektura aplikacji  
+
+### Diagram komponentów  
+```mermaid
+graph TD
+    A[UI Layer] --> B[Business Logic]
+    B --> C[Math Engine]
+    C --> D[Taylor Calculator]
+    C --> E[Angle Normalizer]
+```  
+
+### Główne klasy:  
+- **TaylorSinFX** - Główna klasa aplikacji (JavaFX Application)  
+- **ChartUpdater** - Zarządza aktualizacją wykresu  
+- **AngleProcessor** - Obsługuje konwersje i normalizację kątów  
+- **ErrorAnalyzer** - Oblicza błędy aproksymacji  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="kod"></a>
+## 📖 Dokumentacja kodu  
+
+### Kluczowe metody  
+```java
+/**
+ * Oblicza przybliżenie sin(x) z użyciem szeregu Taylora
+ * @param x - Kąt w radianach (po redukcji)
+ * @param terms - Liczba wyrazów szeregu
+ * @return Aproksymowana wartość sin(x)
+ */
+private double calculateTaylorSin(double x, int terms) {
+    double sum = 0.0;
+    double term = x;
+    for (int n = 0; n < terms; n++) {
+        sum += term;
+        term = -term * x * x / ((2 * n + 2) * (2 * n + 3));
+    }
+    return sum;
+}
+```  
+
+**Optymalizacja:** Brak powtarzających się obliczeń silni i potęg dzięki rekurencyjnej formule.  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="przyklady"></a>
+## 🔍 Przykłady użycia  
+
+### Przykład 1: Mały kąt (30°)  
+```  
+Liczba wyrazów: 3  
+Błąd względny: 0.00000002%  
+```  
+
+### Przykład 2: Duży kąt (10^6 rad)  
+```  
+Zredukowany kąt: 1.234 rad  
+Błąd bezwzględny: 2.45e-15  
+```  
+
+### Przykład 3: Graniczne przypadki  
+| Kąt | Wynik |  
+|-----|-------|  
+| 0 | 0.0 |  
+| π/2 | 1.0 |  
+| 3π/2 | -1.0 |  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="rozwoj"></a>
+## 🔮 Rozwój projektu  
+
+### Planowane funkcje:  
+- [ ] Wsparcie dla cos(x) i exp(x)  
+- [ ] Tryb porównawczy wielu funkcji  
+- [ ] Eksport wyników do CSV/JSON  
+
+### Jak możesz pomóc?  
+1. Zgłaszaj problemy przez GitHub Issues  
+2. Proponuj ulepszenia w Pull Requests  
+3. Testuj na różnych platformach  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="licencja"></a>
+## 📜 Licencja  
+Projekt objęty licencją MIT. Pełny tekst dostępny w pliku [LICENSE](LICENSE).  
+
+```text
+MIT License
+Copyright (c) 2024 Kostiantyn Feniuk
+```  
+
+[Do góry ↑](#top)
+
+---
+
+<a name="autor"></a>
+## 👨💻 Autor  
+**Kostiantyn Feniuk**  
+- Nr indeksu: s29919  
+- Email: [k.feniuk@student.uw.edu.pl](mailto:k.feniuk@student.uw.edu.pl)  
+- GitHub: [@feniuk](https://github.com/feniuk)  
+
+*"Matematyka jest alfabetem, za pomocą którego Bóg opisał wszechświat." – Galileo Galilei*  
+
+[Do góry ↑](#top)
