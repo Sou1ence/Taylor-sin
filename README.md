@@ -172,11 +172,106 @@ term_{n+1} = term_n * (-x²) / [(2n+2)(2n+3)]
 
 ### Diagram komponentów  
 ```mermaid
-graph TD
-    A[UI Layer] --> B[Business Logic]
-    B --> C[Math Engine]
-    C --> D[Taylor Calculator]
-    C --> E[Angle Normalizer]
+---
+config:
+  theme: dark
+  themeVariables:
+    primaryColor: '#272726'
+    primaryTextColor: '#dfdfdc'
+    primaryBorderColor: '#4f4f4c'
+    lineColor: '#ca7b5d'
+    secondaryColor: '#3f3f3c'
+    tertiaryColor: '#ca7b5d'
+    noteBkgColor: '#242423'
+    noteTextColor: '#7f72c3'
+    edgeLabelBackground: '#2c2c2a'
+    fontFamily: ''
+    mainBkg: '#2c2c2a'
+    nodeBorder: '#4f4f4c'
+    clusterBkg: '#3f3f3c'
+    clusterBorder: '#4f4f4c'
+    defaultLinkColor: '#ca7b5d'
+    titleColor: '#dfdfdc'
+  layout: fixed
+---
+flowchart TB
+ subgraph UI["Interfejs użytkownika"]
+    direction TB
+        inputForm["Formularz wejściowy"]
+        angleField["Pole kąta"]
+        unitCombo["Wybór jednostki\n(Stopnie/Radiany)"]
+        calcButton["Przycisk Calculate"]
+  end
+ subgraph Display["Elementy wyświetlania"]
+    direction TB
+        chart["Wykres LineChart"]
+        infoBox["Pole informacyjne"]
+        realValue["Wartość rzeczywista sin(x)"]
+        approxValue["Wartość przybliżona sin(x)"]
+        absError["Błąd bezwzględny"]
+        relError["Błąd względny (%)"]
+  end
+ subgraph TaylorSeries["Obliczenia szeregu Taylora"]
+    direction TB
+        initTaylor["Inicjalizacja pierwszego\nwyrazu szeregu (x)"]
+        loopTaylor["Pętla dla kolejnych\nwyrazów szeregu"]
+        calculateTerm["Obliczenie kolejnego\nwyrazu szeregu\n(-1)^n * x^(2n+1) / (2n+1)!"]
+        sumTerms["Sumowanie wyrazów szeregu"]
+  end
+ subgraph Calculations["Obliczenia matematyczne"]
+    direction TB
+        convertToRad["Konwersja kąta do radianów"]
+        normAngle["Normalizacja kąta\n(redukcja do zakresu 0-2π)"]
+        applySymmetry["Zastosowanie symetrii\nfunkcji sinus"]
+        calculateRef["Obliczenie dokładnej\nwartości sin(x)"]
+        TaylorSeries
+  end
+    start(["START"]) --> initialize["Inicjalizacja aplikacji JavaFX"]
+    initialize --> setupUI["Konfiguracja interfejsu użytkownika"]
+    inputForm --> angleField & unitCombo & calcButton
+    infoBox --> realValue & approxValue & absError & relError
+    setupUI --> UI & Display
+    calcButton -- Akcja kliknięcia --> parseInput["Parsowanie danych wejściowych"]
+    parseInput -- Jeśli błąd --> showError["Wyświetl komunikat błędu"]
+    parseInput -- Dane poprawne --> updateChart["Wywołanie updateChart()"]
+    initTaylor --> loopTaylor
+    loopTaylor --> calculateTerm
+    calculateTerm --> sumTerms
+    sumTerms -- Kolejny wyraz --> loopTaylor
+    convertToRad --> normAngle
+    normAngle --> applySymmetry
+    applySymmetry --> calculateRef & TaylorSeries
+    updateChart --> Calculations
+    Calculations --> updateChartData["Aktualizacja danych wykresu"] & calcErrors["Obliczenie błędów\napproximacji"]
+    updateChartData --> chart
+    calcErrors --> infoBox
+    showError -- Powrót do --> inputForm
+    chart -- Proces zakończony --> finish(["KONIEC"])
+    infoBox -- Proces zakończony --> finish
+     inputForm:::inputBox
+     angleField:::inputBox
+     unitCombo:::inputBox
+     calcButton:::calcBox
+     chart:::chartBox
+     infoBox:::dataBox
+     realValue:::dataBox
+     approxValue:::dataBox
+     absError:::dataBox
+     relError:::dataBox
+     initTaylor:::mathBox
+     loopTaylor:::mathBox
+     calculateTerm:::mathBox
+     sumTerms:::mathBox
+     convertToRad:::mathBox
+     normAngle:::mathBox
+     applySymmetry:::mathBox
+     calculateRef:::mathBox
+    classDef inputBox fill:#3f3f3c,stroke:#4f4f4c,color:#a19e96
+    classDef calcBox fill:#ca7b5d,stroke:#ca7b5d,color:#dfdfdc
+    classDef dataBox fill:#272726,stroke:#4f4f4c,color:#dfdfdc
+    classDef mathBox fill:#242423,stroke:#4f4f4c,color:#7f72c3
+    classDef chartBox fill:#272726,stroke:#4f4f4c,color:#dfdfdc
+
 ```  
 
 ### Główne klasy:  
@@ -277,8 +372,8 @@ Copyright (c) 2024 Kostiantyn Feniuk
 ## 👨💻 Autor  
 **Kostiantyn Feniuk**  
 - Nr indeksu: s29919  
-- Email: [k.feniuk@student.uw.edu.pl](mailto:k.feniuk@student.uw.edu.pl)  
-- GitHub: [@feniuk](https://github.com/feniuk)  
+- Email: [s29919@pjwstk.edu.pl](mailto:k.feniuk@student.uw.edu.pl)  
+- GitHub: [@Sou1ence ](https://github.com/feniuk)  
 
 *"Matematyka jest alfabetem, za pomocą którego Bóg opisał wszechświat." – Galileo Galilei*  
 
