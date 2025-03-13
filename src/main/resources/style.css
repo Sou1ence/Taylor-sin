@@ -1,0 +1,167 @@
+/* Styles for Taylor Sin Calculator */
+
+/* Main colors */
+* {
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+.root {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2c2c2a, #2f2f2e);
+    -fx-font-size: 13px;
+}
+
+/* Input form styling */
+.input-form {
+    -fx-background-color: #3f3f3c;
+    -fx-background-radius: 5px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-alignment: center-left;
+}
+
+.input-form .label {
+    -fx-text-fill: #a19e96;
+}
+
+.text-field {
+    -fx-background-color: #272726;
+    -fx-text-fill: #a19e96;
+    -fx-background-radius: 3px;
+    -fx-border-color: #4f4f4c;
+    -fx-border-radius: 3px;
+    -fx-highlight-fill: #ca7b5d;
+    -fx-pref-width: 100px;
+}
+
+/* ComboBox styling */
+.combo-box {
+    -fx-background-color: #272726;
+    -fx-text-fill: #a19e96;
+    -fx-background-radius: 3px;
+    -fx-border-color: #4f4f4c;
+    -fx-border-radius: 3px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #272726;
+    -fx-text-fill: #a19e96;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #272726;
+    -fx-border-color: #4f4f4c;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #ca7b5d;
+    -fx-text-fill: #dfdfdc;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #ca7b5d;
+    -fx-text-fill: #dfdfdc;
+    -fx-background-radius: 3px;
+    -fx-cursor: hand;
+    -fx-padding: 8px 15px;
+}
+
+.button:hover {
+    -fx-background-color: derive(#ca7b5d, 10%);
+}
+
+.button:pressed {
+    -fx-background-color: derive(#ca7b5d, -10%);
+}
+
+/* Chart styling */
+.chart {
+    -fx-background-color: #272726;
+    -fx-padding: 10px;
+}
+
+.chart-title {
+    -fx-text-fill: #dfdfdc;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.chart-plot-background {
+    -fx-background-color: #242423;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: #3f3f3c;
+    -fx-stroke-dash-array: 2 4;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: #3f3f3c;
+    -fx-stroke-dash-array: 2 4;
+}
+
+.chart-series-line {
+    -fx-stroke: #ca7b5d;
+    -fx-stroke-width: 2px;
+}
+
+.axis {
+    -fx-tick-label-fill: #a19e96;
+}
+
+.axis-label {
+    -fx-text-fill: #a19e96;
+}
+
+/* Info box styling */
+.info-box {
+    -fx-background-color: #272726;
+    -fx-background-radius: 5px;
+    -fx-padding: 15px;
+    -fx-spacing: 10px;
+    -fx-border-color:  #4f4f4c;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+}
+
+.info-header {
+    -fx-text-fill: #dfdfdc;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+.info-content {
+    -fx-background-color: #242423;
+    -fx-background-radius: 3px;
+    -fx-padding: 10px;
+    -fx-text-fill: #7f72c3;
+    -fx-wrap-text: true;
+}
+
+
+
+/* ==================== */
+/* Personal label style */
+/* ==================== */
+
+.personal-label {
+    -fx-text-fill: #ca7b5d;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #242423;
+    -fx-background-radius: 3px;
+    -fx-border-color: #ca7b5d;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-radius: 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0, 1, 1);
+    -fx-opacity: 0.9;
+}
+
+.personal-label:hover {
+    -fx-background-color: #2a2a27;
+    -fx-opacity: 1.0;
+    -fx-border-width: 0 0 2px 0;
+    -fx-cursor: hand;
+}
