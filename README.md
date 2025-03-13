@@ -366,6 +366,85 @@ Copyright (c) 2024 Kostiantyn Feniuk
 
 [Do góry ↑](#top)
 
+
+<a name="szczegóły-implementacji"></a>
+## 🎨 Szczegóły implementacji
+
+### Paleta kolorów i stylizacja
+
+Aplikacja wykorzystuje starannie dobraną paletę kolorów dla optymalnej czytelności i nowoczesnego wyglądu:
+
+| Kolor | Kod HEX | Podgląd | Zastosowanie |
+|-------|---------|---------|--------------|
+| Ciemny tło | `#2c2c2a` | ![#2c2c2a](https://placehold.co/15x15/2c2c2a/2c2c2a.png) | Główne tło aplikacji |
+| Formularz | `#3f3f3c` | ![#3f3f3c](https://placehold.co/15x15/3f3f3c/3f3f3c.png) | Formularze wejściowe |
+| Tło sekcji | `#272726` | ![#272726](https://placehold.co/15x15/272726/272726.png) | Sekcje informacyjne |
+| Tekst główny | `#a19e96` | ![#a19e96](https://placehold.co/15x15/a19e96/a19e96.png) | Etykiety, opisy |
+| Akcenty | `#ca7b5d` | ![#ca7b5d](https://placehold.co/15x15/ca7b5d/ca7b5d.png) | Przyciski, linie wykresu |
+| Informacje | `#7f72c3` | ![#7f72c3](https://placehold.co/15x15/7f72c3/7f72c3.png) | Wartości, komunikaty |
+| Jasny tekst | `#dfdfdc` | ![#dfdfdc](https://placehold.co/15x15/dfdfdc/dfdfdc.png) | Nagłówki, przyciski |
+
+Alternatywnie, poniżej przedstawiono kolory w formacie inline dla lepszej kompatybilności:
+
+- ![#2c2c2a](https://placehold.co/15x15/2c2c2a/2c2c2a.png) `#2c2c2a` - Ciemne tło aplikacji
+- ![#3f3f3c](https://placehold.co/15x15/3f3f3c/3f3f3c.png) `#3f3f3c` - Tło formularzy
+- ![#272726](https://placehold.co/15x15/272726/272726.png) `#272726` - Tło sekcji informacyjnych
+- ![#a19e96](https://placehold.co/15x15/a19e96/a19e96.png) `#a19e96` - Kolor tekstu podstawowego
+- ![#ca7b5d](https://placehold.co/15x15/ca7b5d/ca7b5d.png) `#ca7b5d` - Kolor akcentów i elementów interaktywnych
+- ![#7f72c3](https://placehold.co/15x15/7f72c3/7f72c3.png) `#7f72c3` - Kolor informacji i wartości
+- ![#dfdfdc](https://placehold.co/15x15/dfdfdc/dfdfdc.png) `#dfdfdc` - Jasny tekst na ciemnym tle
+
+### Zasady stylizacji:
+
+- **Kontrast i czytelność**: Wszystkie elementy zaprojektowano z myślą o kontraście 4.5:1 dla dostępności (WCAG AA)
+- **Spójny design**: Jednolite zaokrąglenia narożników (3-5px) dla wszystkich elementów interfejsu
+- **Elementy interaktywne**: Subtelne efekty hover dla wszystkich elementów klikalnych
+- **Hierarchia wizualna**: Kolor akcentujący (`#ca7b5d`) wyróżnia najważniejsze elementy i akcje
+
+### Kod CSS dla głównych elementów interfejsu:
+
+```css
+/* Główne tło aplikacji */
+.root {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2c2c2a, #2f2f2e);
+    -fx-font-size: 13px;
+}
+
+/* Stylizacja formularza */
+.input-form {
+    -fx-background-color: #3f3f3c;
+    -fx-background-radius: 5px;
+    -fx-padding: 15px;
+}
+
+/* Stylizacja przycisku */
+.button {
+    -fx-background-color: #ca7b5d;
+    -fx-text-fill: #dfdfdc;
+    -fx-background-radius: 3px;
+}
+
+/* Stylizacja wykresu */
+.chart {
+    -fx-background-color: #272726;
+    -fx-padding: 10px;
+}
+.chart-series-line {
+    -fx-stroke: #ca7b5d;
+    -fx-stroke-width: 2px;
+}
+
+/* Stylizacja sekcji informacyjnej */
+.info-box {
+    -fx-background-color: #272726;
+    -fx-background-radius: 5px;
+    -fx-border-color: #4f4f4c;
+}
+.info-content {
+    -fx-text-fill: #7f72c3;
+}
+```
+
 ---
 
 <a name="autor"></a>
