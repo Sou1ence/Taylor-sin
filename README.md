@@ -20,8 +20,9 @@
 8. [Dokumentacja kodu](#kod)  
 9. [Przykłady użycia](#przyklady)  
 10. [Rozwój projektu](#rozwoj)  
-11. [Licencja](#licencja)  
-12. [Autor](#autor)  
+11. [Licencja](#licencja)
+12. [Paleta kolorów i stylizacja](#szczegóły-implementacji)
+13. [Autor](#autor)  
 
 ---
 ![изображение](https://github.com/user-attachments/assets/1e4b4927-4a5d-4824-af9a-dd3d640d3cca)
