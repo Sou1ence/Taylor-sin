@@ -24,7 +24,7 @@
 12. [Autor](#autor)  
 
 ---
-![изображение](https://github.com/user-attachments/assets/94eecc26-d283-447b-a8a6-6f5cbc94d1a1)
+![изображение](https://github.com/user-attachments/assets/1e4b4927-4a5d-4824-af9a-dd3d640d3cca)
 
 <a name="wprowadzenie"></a>
 ## 🌟 Wprowadzenie  
