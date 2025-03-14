@@ -84,7 +84,7 @@
 
 ### Metoda 1: Z użyciem Maven  
 ```bash 
-git clone https://github.com/twoj-repozytorium/TaylorSinFX.git
+git clone --depth 1 https://github.com/Sou1ence/Taylor-sin-.git
 cd TaylorSinFX
 mvn clean javafx:run
 ```  
