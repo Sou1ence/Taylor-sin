@@ -20,7 +20,6 @@
 8. [Dokumentacja kodu](#kod)  
 9. [Przykłady użycia](#przyklady)  
 10. [Rozwój projektu](#rozwoj)  
-11. [Licencja](#licencja)
 12. [Paleta kolorów i stylizacja](#szczegóły-implementacji)
 13. [Autor](#autor)  
 
@@ -355,17 +354,6 @@ Błąd bezwzględny: 2.45e-15
 [Do góry ↑](#top)
 
 ---
-
-<a name="licencja"></a>
-## 📜 Licencja  
-Projekt objęty licencją MIT. Pełny tekst dostępny w pliku [LICENSE](LICENSE).  
-
-```text
-MIT License
-Copyright (c) 2024 Kostiantyn Feniuk
-```  
-
-[Do góry ↑](#top)
 
 
 <a name="szczegóły-implementacji"></a>
