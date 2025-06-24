@@ -1,13 +1,15 @@
 
 
 
-
-# TaylorSinFX - Wizualizacja szeregu Taylora dla funkcji sin(x)  
-
 <a name="top"></a>
 [![Java](https://img.shields.io/badge/Java-17%2B-orange)](https://www.java.com/)
 [![JavaFX](https://img.shields.io/badge/JavaFX-17%2B-blue)](https://openjfx.io/)
 [![Licencja](https://img.shields.io/badge/Licencja-MIT-green)](LICENSE)
+# TaylorSinFX - Wizualizacja szeregu Taylora dla funkcji sin(x)  
+
+![изображение](https://github.com/user-attachments/assets/1e4b4927-4a5d-4824-af9a-dd3d640d3cca)
+
+
 
 ## Spis treści  
 1. [Wprowadzenie](#wprowadzenie)  
@@ -24,7 +26,6 @@
 13. [Autor](#autor)  
 
 ---
-![изображение](https://github.com/user-attachments/assets/1e4b4927-4a5d-4824-af9a-dd3d640d3cca)
 
 <a name="wprowadzenie"></a>
 ## 🌟 Wprowadzenie  
