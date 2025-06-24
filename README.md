@@ -443,6 +443,6 @@ Alternatywnie, poniżej przedstawiono kolory w formacie inline dla lepszej kompa
 - Email: [s29919@pjwstk.edu.pl](mailto:k.feniuk@student.uw.edu.pl)  
 - GitHub: [@Sou1ence ](https://github.com/feniuk)  
 
-*"Matematyka jest alfabetem, za pomocą którego Bóg opisał wszechświat." – Galileo Galilei*  
+*Developed by Era*  
 
 [Do góry ↑](#top)
